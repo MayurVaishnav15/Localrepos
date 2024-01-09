@@ -1,4 +1,89 @@
 <p>This is my new Para</p>
 <p>This is a new feature(dropdown)</p>
 <p>This is a new feature(button)</p>
+<p>Work for other day during my practical exams</p>
+<p>#include<iostream>
+using namespace std;
+#include<string.h>
+#include<conio.h>
+struct State
+{
+ char st_name[30];
+ long population;
+ float lit_rate;
+ int pci;
+};
+void read_data(struct State *, int);
+void display(struct State *);
+void highest_lr(struct State *, int);
+void highest_pci(struct State *, int);
+int main()
+3CS4-22 OBJECT ORIENTED PROGRAMMING LAB - 2 - 22EGICS075
+{
+ int size;
+ cout << "\nEnter number of States: \n";
+ cin >> size;
+ struct State s[size];
+ read_data(s, size);
+ cout << "\n\n\n-------------DETAILS OF STATE WITH HIGHEST LITERACY RATE---------------";
+ highest_lr(s, size);
+ cout << "\n\n\n----------DETAILS OF STATE WITH HIGHEST PER CAPITA INCOME---------";
+ highest_pci(s, size);
+ getch();
+ return 0;
+}
+void read_data(struct State *ptr, int size)
+{
+ int i;
+ for (i = 0; i < size; i++)
+ {
+ cout << "\n\nEnter details for State " << i + 1 << " :-\n";
+ fflush(stdin);
+ cout << "\nName of State: ";
+ gets((ptr + i)->st_name);
+ cout << "\nPopulation: ";
+ cin >> ((ptr + i)->population);
+ cout << "\nLiteracy Rate: ";
+3CS4-22 OBJECT ORIENTED PROGRAMMING LAB - 3 - 22EGICS075
+ cin >> ((ptr + i)->lit_rate);
+ cout << "\nPer Capita Income: ";
+ cin >> ((ptr + i)->pci);
+ }
+}
+void display(struct State *ptr)
+{
+ cout << "\n\nNAME OF STATE: " << (ptr->st_name);
+ cout << "\n\nPOPULATION OF STATE: " << (ptr->population);
+ cout << "\n\nLITERACY RATE OF STATE: " << (ptr->lit_rate);
+ cout << "\n\nPER CAPITA INCOME OF STATE: " << (ptr->pci);
+}
+void highest_lr(struct State *ptr, int size)
+{
+ int i, pos;
+ float hlr = ptr->lit_rate;
+ for (i = 0; i < size; i++)
+ {
+ if ((ptr + i)->lit_rate > hlr)
+ {
+ hlr = (ptr + i)->lit_rate;
+ pos = i;
+ }
+ }
+ display(ptr + pos);
+3CS4-22 OBJECT ORIENTED PROGRAMMING LAB - 4 - 22EGICS075
+}
+void highest_pci(struct State *ptr, int size)
+{
+ int i, h_pci, pos;
+ h_pci = ptr->pci;
+ for (i = 0; i < size; i++)
+ {
+ if ((ptr + i)->pci > h_pci)
+ {
+ h_pci = (ptr + i)->pci;
+ pos = i;
+ }
+ }
+ display(ptr+pos);
+}</p>
 
